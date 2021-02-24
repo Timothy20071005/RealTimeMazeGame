@@ -1,4 +1,4 @@
-class Ground {
+class Wall {
     constructor(x, y, w, h) {
         var options = {
             isStatic: true
