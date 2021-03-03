@@ -51,7 +51,7 @@ function draw() {
     wall8.display();
     wall9.display();
     wall10.display();
-    wall11.display();
+    wall11.display();                                   
     wall12.display();
     wall13.display();
     wall14.display();
@@ -61,14 +61,19 @@ function draw() {
     knight1.display();
     knight2.display();
     knight3.display();
+    console.log(knight1.body.position.y)
+    if(keyIsDown(RIGHT_ARROW)) { knight1.body.position.x += 5 } 
+    if(keyIsDown(DOWN_ARROW)) { knight1.body.position.y += 5 } 
+    if(keyIsDown(LEFT_ARROW)) { knight1.body.position.x -= 5 } 
+    if(keyIsDown(UP_ARROW)) { knight1.body.position.y -= 5 } 
 }
-function keyPressed() {
+/*function keyPressed() {
     if (keyCode === 38) {
-        Matter.Body.setVelocity(knight1.body, { x: 0, y: -250})
-        console.log(knight1.body)
+        Matter.Body.applyForce(knight1.body, knight1.body.position, { x: 1, y: -5})
+       Matter.Body.setStatic(knight1.body,false);
     }
     else if (keyCode === 39) {
-        Matter.Body.setVelocity(knight1.body, { x: 25, y: 0 })
+        Matter.Body.setVelocity(knight1.body, { x: 25, y: 0 })    
         console.log(knight1.body)
     }
     else if (keyCode === 37) {
@@ -79,4 +84,4 @@ function keyPressed() {
         Matter.Body.setVelocity(knight1.body, { x: 0, y: 25 })
         console.log(knight1.body)
     }
-};
+};*/

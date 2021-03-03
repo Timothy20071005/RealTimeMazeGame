@@ -1,8 +1,10 @@
 class Player{
     constructor(x,y){
     var options = {
-        isStatic : false,
-        restitution:0.4
+        isStatic : true,
+        restitution:1,
+        density:1,
+        friction:1
     }
     this.body = Matter.Bodies.rectangle(x,y,50,50,options)
     this.image = loadImage("sprites/knight.png");
