@@ -5,14 +5,21 @@ const Constraint = Matter.Constraint;
 
 var engine, world;
 var wall;
+var bg;
+var gameState = 0;
+
+
 
 
 function preload() {
-
+bg = loadImage("sprites/bg.jpg");
 }
 
 function setup() {
     var canvas = createCanvas(displayWidth, displayHeight);
+
+ 
+
     engine = Engine.create();
     world = engine.world;
     wall1 = new Wall(0, displayHeight - 20, 400, 20);
@@ -33,14 +40,24 @@ function setup() {
     wall16 = new Wall(displayWidth / 7 - 5, displayHeight / 3, 150, 20);
     wall17 = new Wall(displayWidth / 2 + 100, displayHeight / 15, 20, 225);
     knight1 = new Player(50, displayHeight / 2 + 100);
-    knight2 = new Player(displayWidth - 100, displayHeight / 2 + 150);
-    knight3 = new Player(displayWidth - 100, displayHeight / 8);
-    knights = [knight1, knight2, knight3];
+    knight2 = new Player(displayWidth - 100, displayHeight / 8);
+    knights = [knight1, knight2];
 }
 
 function draw() {
-    background("black")
+    background(bg)
     Engine.update(engine);
+    display();  
+    keyPressed();
+    console.log(knight1.body.position.y)
+    if(keyIsDown(RIGHT_ARROW)) { knight1.body.position.x += 5 } 
+    if(keyIsDown(DOWN_ARROW)) { knight1.body.position.y += 5 } 
+    if(keyIsDown(LEFT_ARROW)) { knight1.body.position.x -= 5 } 
+    if(keyIsDown(UP_ARROW)) { knight1.body.position.y -= 5 }
+   
+
+}
+function display(){
     wall1.display();
     wall2.display();
     wall3.display();
@@ -60,28 +77,11 @@ function draw() {
     wall17.display();
     knight1.display();
     knight2.display();
-    knight3.display();
-    console.log(knight1.body.position.y)
-    if(keyIsDown(RIGHT_ARROW)) { knight1.body.position.x += 5 } 
-    if(keyIsDown(DOWN_ARROW)) { knight1.body.position.y += 5 } 
-    if(keyIsDown(LEFT_ARROW)) { knight1.body.position.x -= 5 } 
-    if(keyIsDown(UP_ARROW)) { knight1.body.position.y -= 5 } 
 }
-/*function keyPressed() {
-    if (keyCode === 38) {
-        Matter.Body.applyForce(knight1.body, knight1.body.position, { x: 1, y: -5})
-       Matter.Body.setStatic(knight1.body,false);
-    }
-    else if (keyCode === 39) {
-        Matter.Body.setVelocity(knight1.body, { x: 25, y: 0 })    
-        console.log(knight1.body)
-    }
-    else if (keyCode === 37) {
-        Matter.Body.setVelocity(knight1.body, { x: -25, y: 0 })
-        console.log(knight1.body)
-    }
-    else if (keyCode === 40) {
-        Matter.Body.setVelocity(knight1.body, { x: 0, y: 25 })
-        console.log(knight1.body)
-    }
-};*/
+function keyPressed(){
+    if(keyCode===100) { knight2.body.position.x += 5 } 
+    if(keyCode===115) { knight2.body.position.y += 5 } 
+    if(keyCode===97) { knight2.body.position.x -= 5 } 
+    if(keyCode===119) { knight2.body.position.y -= 5 }
+}
+  

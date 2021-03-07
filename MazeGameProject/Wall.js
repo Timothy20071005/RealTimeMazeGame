@@ -2,7 +2,8 @@ class Wall {
     constructor(x, y, w, h) {
         var options = {
             isStatic: true,
-            density:1
+            density:1,
+            restitution:1
         }
         this.body = Matter.Bodies.rectangle(x, y, width, height, options)
         this.width = w;
